@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 700.54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-family: JetBrainsMonoNL-ExtraBold, 'JetBrains Mono NL';
+        font-size: 300px;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #be1622;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+
+      .cls-2 {
+        fill: #e94e1b;
+      }
+    </style>
+  </defs>
+  <polygon class="cls-2" points="23.48 243.66 14.56 456.88 146.29 629.38 345 695.27 543.71 629.38 675.44 456.88 666.52 243.66 543.71 71.16 345 5.27 146.29 71.16 23.48 243.66"/>
+  <text class="cls-1" transform="translate(165 459.77)"><tspan x="0" y="0">12</tspan></text>
+</svg>
