@@ -26,7 +26,7 @@ h1 {
     padding: 20px;
     border: 1px solid #000;
     border-radius: 10px;
-    background-color: #f0f0f0;
+    background-color: #f0f0f027;
     margin-bottom: 20px;
     min-height: 100px;
 }
@@ -38,46 +38,80 @@ h1 {
 }
 
 .dados {
-    margin: 8px;
-    transition: transform 0.5s ease, filter 0.5s ease;
+    margin-left: 8px;
+    margin-right: 8px;
+    transition: transform 0.5s ease;
+    transition: filter 0.5s ease;
     width: 50px;
-    height: auto;
 }
 
 .dados:hover {
     cursor: pointer;
     transform: scale(1.3);
+    transition: transform 0.5s ease;
 }
 
 .dados:not(:hover) {
     transform: scale(1);
 }
 
+.dados#d2:hover {
+    filter: drop-shadow(0 0 10px rgba(247, 171, 58, 0.696));
+}
+
+.dados#d4:hover {
+    filter: drop-shadow(0 0 10px rgba(9, 162, 27, 0.696));
+}
+
+.dados#d6:hover {
+    filter: drop-shadow(0 0 10px rgba(45, 199, 210, 0.696));
+}
+
+.dados#d8:hover {
+    filter: drop-shadow(0 0 10px rgba(88, 34, 205, 0.696));
+}
+
+.dados#d10:hover {
+    filter: drop-shadow(0 0 10px rgba(227, 59, 199, 0.696));
+}
+
+.dados#d12:hover {
+    filter: drop-shadow(0 0 10px rgba(237, 65, 65, 0.696));
+}
+
+.dados#d20:hover {
+    filter: drop-shadow(0 0 10px rgba(220, 47, 255, 0.696));
+}
+
+.dados#dX:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.696));
+}
+
 .rolar-dados {
     background-color: white;
-    color: black;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", monospace !important;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.rolar-dados:hover {
+    max-width: 10%;
+    }
+    
+    .rolar-dados:hover {
     background-color: black;
-    color: white;
     transition: background-color 0.5s ease;
-}
+    color: white;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.304));
+    }
 
 .bonus {
+    display: flex;
+    flex-direction: column;
     background-color: transparent;
     font-family: "JetBrains Mono", monospace;
     text-align: center;
     color: white;
     max-width: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 20PX;
 }
 
 .resultado-dado {
@@ -100,6 +134,7 @@ h1 {
     bottom: 0;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

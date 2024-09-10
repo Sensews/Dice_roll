@@ -25,33 +25,56 @@ rollButton.addEventListener('click', () => {
     if (selectedDice.length > 0) {
         displayRolagens.innerHTML = ''; // Limpa a área de display para nova rolagem
         let total = 0;
-        selectedDice.forEach(dice => {
-            const rollResult = Math.floor(Math.random() * dice.value) + 1;
-            total += rollResult;
-            createDiceResultElement(dice.img, rollResult);
+        let bonus = parseInt(bonusInput.value) || 0;
+
+        // Função para animar a rolagem de cada dado
+        selectedDice.forEach((dice, index) => {
+            const diceResult = Math.floor(Math.random() * dice.value) + 1;
+            total += diceResult;
+
+            animateDiceRoll(dice.img, diceResult, dice.value); // Corrigido para passar o valor correto
         });
 
-        const bonus = parseInt(bonusInput.value) || 0;
-        total += bonus;
+        // Exibe o total após o tempo da animação
+        setTimeout(() => {
+            const resultElement = document.createElement('div');
+            resultElement.classList.add('resultado-dado');
+            resultElement.innerHTML = `<strong>Resultado Final:</strong> ${total + bonus}`;
+            displayRolagens.appendChild(resultElement);
 
-        const resultElement = document.createElement('div');
-        resultElement.classList.add('resultado-dado');
-        resultElement.innerHTML = `<strong>Resultados:</strong> ${total} (Bônus: ${bonus})`;
-        displayRolagens.appendChild(resultElement);
-
-        // Limpa os dados selecionados para próxima rolagem
-        selectedDice = [];
+            // Limpa os dados selecionados para a próxima rolagem
+            selectedDice = [];
+        }, 1500); // Tempo para esperar o fim da animação
     }
 });
 
-function createDiceResultElement(diceImage, result) {
+function animateDiceRoll(diceImage, finalResult, diceValue) {
     const diceResultDiv = document.createElement('div');
     diceResultDiv.classList.add('resultado-dado');
+    const diceEmptyImage = `Assets/Dados_Vazios/${diceImage.split('/').pop().replace('.svg', '_VAZIO.SVG')}`;
+    
     diceResultDiv.innerHTML = `
-        <img src="Assets/Dados_Vazios/${diceImage.split('/').pop().replace('.svg', '_VAZIO.SVG')}" alt="Resultado do dado">
-        <span>${result}</span>
+        <img src="${diceEmptyImage}" alt="Resultado do dado">
+        <span>${finalResult}</span>
     `;
+    
     displayRolagens.appendChild(diceResultDiv);
+
+    // Animação com números aleatórios
+    let animationDuration = 1500; // 1.5 segundos de animação
+    let intervalTime = 100; // Intervalo entre números aleatórios
+    let animationTime = 0;
+
+    const interval = setInterval(() => {
+        if (animationTime >= animationDuration) {
+            clearInterval(interval);
+            diceResultDiv.querySelector('span').textContent = finalResult; // Exibe o resultado final
+        } else {
+            let randomValue = Math.floor(Math.random() * diceValue) + 1; // Usa o valor correto do dado
+            diceResultDiv.querySelector('span').textContent = randomValue;
+        }
+        animationTime += intervalTime;
+    }, intervalTime);
 }
 
 function updateDisplay() {
@@ -64,4 +87,32 @@ function updateDisplay() {
         diceElement.classList.add('dados');
         displayRolagens.appendChild(diceElement);
     });
+}
+function animateDiceRoll(diceImage, finalResult, diceValue) {
+    const diceResultDiv = document.createElement('div');
+    diceResultDiv.classList.add('resultado-dado');
+    const diceEmptyImage = `Assets/Dados_Vazios/${diceImage.split('/').pop().replace('.svg', '_VAZIO.SVG')}`;
+    
+    diceResultDiv.innerHTML = `
+        <img src="${diceEmptyImage}" alt="Resultado do dado">
+        <span>${finalResult}</span>
+    `;
+    
+    displayRolagens.appendChild(diceResultDiv);
+
+    // Animação com números aleatórios
+    let animationDuration = 1500; // 1.5 segundos de animação
+    let intervalTime = 100; // Intervalo entre números aleatórios
+    let animationTime = 0;
+
+    const interval = setInterval(() => {
+        if (animationTime >= animationDuration) {
+            clearInterval(interval);
+            diceResultDiv.querySelector('span').textContent = finalResult; // Exibe o resultado final
+        } else {
+            let randomValue = Math.floor(Math.random() * diceValue) + 1; // Usa o valor correto do dado
+            diceResultDiv.querySelector('span').textContent = randomValue;
+        }
+        animationTime += intervalTime;
+    }, intervalTime);
 }
