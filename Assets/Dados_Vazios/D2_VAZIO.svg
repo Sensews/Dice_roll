@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 700">
+<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">
   <defs>
     <style>
       .cls-1 {
         fill: #ca9e67;
-      }
-
-      .cls-1, .cls-2 {
         stroke: #b17f4a;
         stroke-miterlimit: 10;
         stroke-width: 10px;
       }
-
-      .cls-2 {
-        fill: #fff;
-        font-family: JetBrainsMonoNL-ExtraBold, 'JetBrains Mono NL';
-        font-size: 300px;
-        font-weight: 700;
-      }
     </style>
   </defs>
   <circle class="cls-1" cx="350" cy="350" r="345"/>
-  <text class="cls-2" transform="translate(260 459.5)"><tspan x="0" y="0">2</tspan></text>
-  <text/>
 </svg>
