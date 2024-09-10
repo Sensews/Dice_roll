@@ -8,28 +8,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <h1>Feeling Lucky?</h1>
-    <div class="displays-de-rolagens"></div>
+    <div class="displays-de-rolagens" id="display-rolagens"></div>
 
     <div class="selecionar-dados">
-        <img class="dados" id="d2" src="Assets/Dados/D2.svg" alt="dice">
-        <img class="dados" id="d4" src="Assets/Dados/D4.svg" alt="dice">
-        <img class="dados" id="d6" src="Assets/Dados/D6.svg" alt="dice">
-        <img class="dados" id="d8" src="Assets/Dados/D8.svg" alt="dice">
-        <img class="dados" id="d10" src="Assets/Dados/D10.svg" alt="dice">
-        <img class="dados" id="d12" src="Assets/Dados/D12.svg" alt="dice">
-        <img class="dados" id="d20" src="Assets/Dados/D20.svg" alt="dice">
-        <img class="dados" id="dX" src="Assets/Dados/DX.svg" alt="dice">
+        <img class="dados" id="d2" src="Assets/Dados/D2.svg" alt="D2">
+        <img class="dados" id="d4" src="Assets/Dados/D4.svg" alt="D4">
+        <img class="dados" id="d6" src="Assets/Dados/D6.svg" alt="D6">
+        <img class="dados" id="d8" src="Assets/Dados/D8.svg" alt="D8">
+        <img class="dados" id="d10" src="Assets/Dados/D10.svg" alt="D10">
+        <img class="dados" id="d12" src="Assets/Dados/D12.svg" alt="D12">
+        <img class="dados" id="d20" src="Assets/Dados/D20.svg" alt="D20">
+        <img class="dados" id="dX" src="Assets/Dados/DX.svg" alt="DX">
     </div>
 
-    <div class="bonus-soma"></div>
-        <label>Bônus</label>
-        <input class="bonus" value="0">
+    <div>
+        <label for="bonus">Bônus</label>
+        <input class="bonus" id="bonus" type="number" value="0">
     </div>
-    
-    <button class="rolar-dados">Roll the Dices</button>
+
+    <button class="rolar-dados" id="roll-dice-button">Roll the Dices</button>
+
+    <script src="script.js"></script>
 </body>
 </html>

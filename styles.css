@@ -5,9 +5,9 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: black ;
+    background-color: black;
     color: white;
-    font-family: "JetBrains Mono", monospace !important;
+    font-family: "JetBrains Mono", monospace;
 }
 
 h1 {
@@ -17,104 +17,89 @@ h1 {
 
 .displays-de-rolagens {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 35%;
+    max-width: 500px;
     padding: 20px;
     border: 1px solid #000;
     border-radius: 10px;
     background-color: #f0f0f0;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
+    min-height: 100px;
 }
 
 .selecionar-dados {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-    align-items: center; 
-    gap: 10px; 
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .dados {
-    margin-left: 8px;
-    margin-right: 8px;
-    transition: transform 0.5s ease;
-    transition: filter 0.5s ease;
+    margin: 8px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    width: 50px;
+    height: auto;
 }
 
 .dados:hover {
     cursor: pointer;
     transform: scale(1.3);
-    transition: transform 0.5s ease;
 }
 
 .dados:not(:hover) {
     transform: scale(1);
 }
 
-.dados#d2:hover {
-    filter: drop-shadow(0 0 10px rgba(247, 171, 58, 0.696));
-}
-
-.dados#d4:hover {
-    filter: drop-shadow(0 0 10px rgba(9, 162, 27, 0.696));
-}
-
-.dados#d6:hover {
-    filter: drop-shadow(0 0 10px rgba(45, 199, 210, 0.696));
-}
-
-.dados#d8:hover {
-    filter: drop-shadow(0 0 10px rgba(88, 34, 205, 0.696));
-}
-
-.dados#d10:hover {
-    filter: drop-shadow(0 0 10px rgba(227, 59, 199, 0.696));
-}
-
-.dados#d12:hover {
-    filter: drop-shadow(0 0 10px rgba(237, 65, 65, 0.696));
-}
-
-.dados#d20:hover {
-    filter: drop-shadow(0 0 10px rgba(220, 47, 255, 0.696));
-}
-
-.dados#dX:hover {
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.696));
-}
-
-.selecionar-dados img {
-    width: 50px; 
-    height: auto; 
-}
-
 .rolar-dados {
-background-color: white;
-font-family: "JetBrains Mono", monospace !important;
-font-size: 16px;
-font-weight: bold;
-max-width: 10%;
+    background-color: white;
+    color: black;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .rolar-dados:hover {
-background-color: black;
-transition: background-color 0.5s ease;
-color: white;
-cursor: pointer;
-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.304));
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
 }
 
 .bonus {
-margin-bottom: 1%;
-margin-top: 0.5%;
-background-color: transparent;
-font-family: "JetBrains Mono", monospace !important;
-text-align: center;
-color: white;
-max-width: 10%;
+    background-color: transparent;
+    font-family: "JetBrains Mono", monospace;
+    text-align: center;
+    color: white;
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.resultado-dado {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.resultado-dado img {
+    width: 50px;
+}
+
+.resultado-dado span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

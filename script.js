@@ -1,67 +1,67 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const dadosSelecionados = [];
-    const bonusInput = document.getElementById('bonus');
-    const displays = document.querySelector('.displays-de-rolagens');
+const diceElements = document.querySelectorAll('.dados');
+const displayRolagens = document.getElementById('display-rolagens');
+const bonusInput = document.getElementById('bonus');
+const rollButton = document.getElementById('roll-dice-button');
 
-    document.querySelectorAll('.selecionar-dados img').forEach(dado => {
-        dado.addEventListener('click', () => {
-            const id = dado.id;
-            if (!dadosSelecionados.includes(id)) {
-                dadosSelecionados.push(id);
-                atualizarDisplays();
+let selectedDice = [];
+
+diceElements.forEach(dice => {
+    dice.addEventListener('click', () => {
+        const diceId = dice.id;
+        if (diceId === 'dX') {
+            const diceValue = prompt("Digite o valor do dado personalizado (ex: 100 para d100):");
+            if (diceValue && !isNaN(diceValue)) {
+                selectedDice.push({ value: parseInt(diceValue), img: dice.src });
             }
-        });
+        } else {
+            const diceValue = parseInt(diceId.substring(1));
+            selectedDice.push({ value: diceValue, img: dice.src });
+        }
+        updateDisplay();
     });
+});
 
-    document.querySelector('.rolar-dados').addEventListener('click', () => {
-        if (dadosSelecionados.length === 0) return;
-
-        let totalSoma = 0;
-        displays.innerHTML = '';
-
-        dadosSelecionados.forEach(id => {
-            const dado = document.createElement('div');
-            dado.classList.add('dado');
-            dado.innerHTML = `
-                <img src="Assets/Dados/${id}.svg" alt="${id}">
-                <div class="resultado">${rolarDado(id)}</div>
-            `;
-            displays.appendChild(dado);
+rollButton.addEventListener('click', () => {
+    if (selectedDice.length > 0) {
+        displayRolagens.innerHTML = ''; // Limpa a área de display para nova rolagem
+        let total = 0;
+        selectedDice.forEach(dice => {
+            const rollResult = Math.floor(Math.random() * dice.value) + 1;
+            total += rollResult;
+            createDiceResultElement(dice.img, rollResult);
         });
 
         const bonus = parseInt(bonusInput.value) || 0;
-        const somaTotal = Array.from(displays.querySelectorAll('.resultado')).reduce((sum, resultado) => {
-            return sum + parseInt(resultado.textContent) || 0;
-        }, bonus);
+        total += bonus;
 
-        const somaElement = document.createElement('div');
-        somaElement.classList.add('soma-total');
-        somaElement.textContent = `Soma Total: ${somaTotal}`;
-        displays.appendChild(somaElement);
+        const resultElement = document.createElement('div');
+        resultElement.classList.add('resultado-dado');
+        resultElement.innerHTML = `<strong>Resultados:</strong> ${total} (Bônus: ${bonus})`;
+        displayRolagens.appendChild(resultElement);
 
-        dadosSelecionados.length = 0; // Limpar seleção após rolar
-    });
-
-    function atualizarDisplays() {
-        displays.innerHTML = '';
-        dadosSelecionados.forEach(id => {
-            const dado = document.createElement('div');
-            dado.classList.add('dado');
-            dado.innerHTML = `
-                <img src="Assets/Dados/${id}_Vazio.svg" alt="${id}">
-                <div class="resultado">?</div>
-            `;
-            displays.appendChild(dado);
-        });
-    }
-
-    function rolarDado(id) {
-        if (id === 'dX') {
-            const tamanho = prompt('Qual o tamanho do dado misterioso?');
-            return Math.floor(Math.random() * parseInt(tamanho)) + 1;
-        } else {
-            const faces = parseInt(id.substring(1)) || 6;
-            return Math.floor(Math.random() * faces) + 1;
-        }
+        // Limpa os dados selecionados para próxima rolagem
+        selectedDice = [];
     }
 });
+
+function createDiceResultElement(diceImage, result) {
+    const diceResultDiv = document.createElement('div');
+    diceResultDiv.classList.add('resultado-dado');
+    diceResultDiv.innerHTML = `
+        <img src="Assets/Dados_Vazios/${diceImage.split('/').pop().replace('.svg', '_VAZIO.SVG')}" alt="Resultado do dado">
+        <span>${result}</span>
+    `;
+    displayRolagens.appendChild(diceResultDiv);
+}
+
+function updateDisplay() {
+    // Atualiza a exibição dos dados selecionados antes de rolar
+    displayRolagens.innerHTML = '';
+    selectedDice.forEach(dice => {
+        const diceElement = document.createElement('img');
+        diceElement.src = dice.img;
+        diceElement.alt = `D${dice.value}`;
+        diceElement.classList.add('dados');
+        displayRolagens.appendChild(diceElement);
+    });
+}
